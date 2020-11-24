@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'kn_db'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'p@s$w0rd'
+      MYSQL_ROOT_PASSWORD: 'r00tP@ssw0rd'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:
