@@ -1,0 +1,14 @@
+### SPRING-BOOT CONFIGURATION.
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/kn_db
+    username: admin
+    password: secret
+
+server:
+  error:
+    whitelabel:
+      enabled: false

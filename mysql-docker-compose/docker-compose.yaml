@@ -6,14 +6,15 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'kn_db'
-      MYSQL_USER: 'root'
+      MYSQL_USER: 'admin'
       MYSQL_PASSWORD: 'p@s$w0rd'
-      MYSQL_ROOT_PASSWORD: 'r00tP@ssw0rd'
+      MYSQL_ROOT_PASSWORD: 'secret'
     ports:
       - '3306:3306'
     expose:
       - '3306'
     volumes:
       - my-db:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
 volumes:
   my-db:
