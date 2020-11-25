@@ -5,10 +5,15 @@ spring:
       ddl-auto: update
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/kn_db
-    username: admin
+    username: root
     password: secret
 
 server:
   error:
     whitelabel:
       enabled: false
+
+pagination:
+  default:
+    page: 0
+    size: 20
