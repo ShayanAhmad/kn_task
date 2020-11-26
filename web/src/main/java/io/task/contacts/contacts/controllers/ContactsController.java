@@ -29,18 +29,15 @@ public class ContactsController {
     /**
      * API REST endpoint to query the contact list.
      *
-     * @param page     is Optional value for pagination. If nothing is given, it will default to 0.
-     * @param size is Optional value for pagination. If nothing is given, it will default to 20.
-     * @param model      is Spring MVC attribute.
+     * @param page  is Optional value for pagination. If nothing is given, it will default to 0.
+     * @param size  is Optional value for pagination. If nothing is given, it will default to 50.
+     * @param model is Spring MVC attribute.
      * @return name of the Thymeleaf page.
      */
     @GetMapping(value = "/contacts")
     public String getContactList(@RequestParam(value = "page", required = false) Integer page,
                                  @RequestParam(value = "size", required = false) Integer size,
                                  Model model) {
-
-        // TODO: add another parameter for nameSearch, pass that to service (if condition to pass values to service),
-        //  get the result and paginate and send it back!
 
         currentPageNumber = getPageNumber(page);
         currentPageSize = getRecordSize(size);
