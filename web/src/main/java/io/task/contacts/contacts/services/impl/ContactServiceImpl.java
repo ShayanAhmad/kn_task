@@ -1,7 +1,6 @@
 package io.task.contacts.contacts.services.impl;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +21,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public List<Contact> getContactList(int page, int size) {
-        return contactRepository.findAll(PageRequest.of(page, size))
-                .toList();
+    public Page<Contact> getContactList(int page, int size) {
+        return contactRepository.findAll(PageRequest.of(page, size));
     }
 }

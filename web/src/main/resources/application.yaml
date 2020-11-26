@@ -12,8 +12,3 @@ server:
   error:
     whitelabel:
       enabled: false
-
-pagination:
-  default:
-    page: 0
-    size: 20
