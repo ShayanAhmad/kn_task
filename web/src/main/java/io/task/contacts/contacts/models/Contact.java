@@ -28,6 +28,10 @@ public class Contact {
     private Contact() {
     }
 
+    public static Contact.ContactBuilder builder(){
+        return new ContactBuilder();
+    }
+
     public Long getId() {
         return id;
     }
