@@ -40,9 +40,9 @@ public class ContactsController {
      * @return name of the Thymeleaf view.
      */
     @GetMapping(value = "/contacts")
-    public String getContactList(@RequestParam(value = "page", required = false) Integer page,
-                                 @RequestParam(value = "size", required = false) Integer size,
-                                 @RequestParam(value = "query", required = false) String searchQuery,
+    public String getContactList(@RequestParam(value = "page", required = false) final Integer page,
+                                 @RequestParam(value = "size", required = false) final Integer size,
+                                 @RequestParam(value = "query", required = false) final String searchQuery,
                                  Model model) {
 
         computeCurrentPageNumber(page);

@@ -22,7 +22,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Page<Contact> getContactList(int page, int size, String searchQuery) {
+    public Page<Contact> getContactList(final int page, final int size, final String searchQuery) {
         PageRequest pageRequest = PageRequest.of(page, size);
 
         return StringUtils.isEmpty(searchQuery)
