@@ -57,7 +57,7 @@ public class ContactsController {
     }
 
     private void computeCurrentSearchQuery(String newSearchQuery) {
-        if (!StringUtils.isEmpty(newSearchQuery)) {
+        if (!Objects.isNull(newSearchQuery)) {
             currentSearchQuery = newSearchQuery;
         }
     }
