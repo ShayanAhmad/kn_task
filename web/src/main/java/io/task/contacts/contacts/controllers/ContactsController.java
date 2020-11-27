@@ -5,7 +5,6 @@ import java.util.Objects;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,9 +33,10 @@ public class ContactsController {
     /**
      * API REST endpoint to query the contact list.
      *
-     * @param page  is Optional value for pagination. If nothing is given, it will default to 0.
-     * @param size  is Optional value for pagination. If nothing is given, it will default to 20.
-     * @param model is Spring MVC attribute.
+     * @param page        is Optional value for page number in pagination.
+     * @param size        is Optional value for page size in pagination.
+     * @param searchQuery is Optional value for search query based on name.
+     * @param model       is Spring MVC attribute.
      * @return name of the Thymeleaf view.
      */
     @GetMapping(value = "/contacts")
@@ -54,12 +54,6 @@ public class ContactsController {
         addContactAttributesInModel(model, contactsResult);
 
         return "contacts";
-    }
-
-    private void computeCurrentSearchQuery(String newSearchQuery) {
-        if (!Objects.isNull(newSearchQuery)) {
-            currentSearchQuery = newSearchQuery;
-        }
     }
 
     private void addContactAttributesInModel(Model model, Page<Contact> contactsResult) {
@@ -84,4 +78,9 @@ public class ContactsController {
         }
     }
 
+    private void computeCurrentSearchQuery(String newSearchQuery) {
+        if (!Objects.isNull(newSearchQuery)) {
+            currentSearchQuery = newSearchQuery;
+        }
+    }
 }
