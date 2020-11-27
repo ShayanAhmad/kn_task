@@ -3,9 +3,10 @@ package io.task.contacts.contacts.services.impl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import io.task.contacts.contacts.models.Contact;
-import io.task.contacts.contacts.repositories.ContactRepository;
+import io.task.contacts.contacts.repositories.ContactJpaRepository;
 import io.task.contacts.contacts.services.ContactService;
 
 /**
@@ -14,14 +15,18 @@ import io.task.contacts.contacts.services.ContactService;
 @Service
 public class ContactServiceImpl implements ContactService {
 
-    private ContactRepository contactRepository;
+    private ContactJpaRepository contactJpaRepository;
 
-    public ContactServiceImpl(ContactRepository contactRepository) {
-        this.contactRepository = contactRepository;
+    public ContactServiceImpl(ContactJpaRepository contactJpaRepository) {
+        this.contactJpaRepository = contactJpaRepository;
     }
 
     @Override
-    public Page<Contact> getContactList(int page, int size) {
-        return contactRepository.findAll(PageRequest.of(page, size));
+    public Page<Contact> getContactList(int page, int size, String searchQuery) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+
+        return StringUtils.isEmpty(searchQuery)
+                ? contactJpaRepository.findAll(pageRequest)
+                : contactJpaRepository.findByName(searchQuery, pageRequest);
     }
 }
