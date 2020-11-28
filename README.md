@@ -20,7 +20,6 @@ or `./mvnw.cmd` (from Windows).
 
 ## Running the project:
 There are two ways to do this:
-1. Run `mvn spring-boot:run`, OR
+1. Run `mvn spring-boot:run` inside `web` folder, OR
 2. Navigate to `ContactsApplication.java` and run the `main` method as Java application.
 3. After application startup, please refer to [http://localhost:8080/contacts](http://localhost:8080/contacts).
-4. Please refer to the [swagger](http://localhost:8080/swagger-ui/).
