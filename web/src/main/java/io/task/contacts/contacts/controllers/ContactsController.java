@@ -2,6 +2,8 @@ package io.task.contacts.contacts.controllers;
 
 import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ import io.task.contacts.contacts.services.ContactService;
  */
 @Controller
 public class ContactsController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContactsController.class);
 
     private static final Integer DEFAULT_PAGE_NUMBER = 0;
     private static final Integer DEFAULT_PAGE_SIZE = 20;
@@ -44,6 +48,7 @@ public class ContactsController {
                                  @RequestParam(value = "size", required = false) final Integer size,
                                  @RequestParam(value = "query", required = false) final String searchQuery,
                                  Model model) {
+        LOGGER.info("GET /contacts : Page={} , size={} , query={}", page, size, searchQuery);
 
         computeCurrentPageNumber(page);
         computeRecordSizeAndResetPageNumber(size);
