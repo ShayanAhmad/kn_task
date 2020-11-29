@@ -15,6 +15,12 @@ import io.task.contacts.contacts.models.Contact;
 public interface ContactJpaRepository extends JpaRepository<Contact, Long> {
     String SEARCH_BY_NAME_QUERY = "SELECT c FROM Contact c WHERE c.name LIKE %?1%";
 
+    /**
+     * Search contacts by name. With wildcard capability.
+     *
+     * @param searchQuery is the query for name which would be checked against the existing records.
+     * @return paginated list of {@link Contact}
+     */
     @Query(SEARCH_BY_NAME_QUERY)
     Page<Contact> findByName(String searchQuery, Pageable pageable);
 }

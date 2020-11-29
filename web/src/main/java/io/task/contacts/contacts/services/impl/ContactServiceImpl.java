@@ -21,6 +21,14 @@ public class ContactServiceImpl implements ContactService {
         this.contactJpaRepository = contactJpaRepository;
     }
 
+    /**
+     * Search contacts by name. With wildcard capability.
+     *
+     * @param page        refers to the page number for pagination.
+     * @param size        refers to the record size pertaining to page number.
+     * @param searchQuery is the query for name which would be checked against the existing records.
+     * @return paginated list of {@link Contact}
+     */
     @Override
     public Page<Contact> getContactList(final int page, final int size, final String searchQuery) {
         PageRequest pageRequest = PageRequest.of(page, size);
